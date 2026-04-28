@@ -11,7 +11,8 @@ summary: A practical explanation of why Pillar Two, withholding taxes, and trans
 
 # Double Dutch Sandwich is Dead 
 
-The 2026 Implementation of Pillar Two and the EU's Streamlined Substance Rules Have Put the Final Coffin Nail into the Double Dutch Sandwich Structure
+The 2026 Implementation of Pillar Two and the EU's Streamlined Substance Rules Have Put the Final Coffin Nail into the Double Dutch Sandwich Structure.
+
 For forty years the Netherlands was the most elegant tax address in the world. Two Dutch entities, an IP holding company and an operating subsidiary, sitting between a high-tax source country and a zero-tax haven. Royalties flowed in. Withholding tax did not flow out. The "sandwich" worked because the Netherlands intentionally positioned itself as a tax-neutral conduit, and the global reporting architecture was too slow and too fragmented to catch the leakage between jurisdictions.
 That architecture is gone.
 
