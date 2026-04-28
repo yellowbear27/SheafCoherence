@@ -259,3 +259,116 @@ a {
     padding: 3rem 0;
   }
 }
+
+.page {
+  width: min(calc(100% - 2rem), 760px);
+  margin: 0 auto;
+  padding: 1.25rem 0 4rem;
+}
+
+.article {
+  padding: 3rem 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.article-header {
+  margin-bottom: 2rem;
+}
+
+.article-header h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
+.meta {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.summary {
+  margin: 1rem 0 0;
+  max-width: 42rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.article-body {
+  max-width: 42rem;
+}
+
+.article-body h1,
+.article-body h2,
+.article-body h3 {
+  margin: 2.2rem 0 0.8rem;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.article-body h1 {
+  font-size: 2rem;
+}
+
+.article-body h2 {
+  font-size: 1.5rem;
+}
+
+.article-body h3 {
+  font-size: 1.2rem;
+}
+
+.article-body p {
+  margin: 0 0 1rem;
+  color: var(--text);
+  font-size: 1.02rem;
+}
+
+.insight-item {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.insight-item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.insight-item h2 {
+  margin: 0.15rem 0 0.45rem;
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.insight-item p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.insight-item a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+@media (max-width: 640px) {
+  .page {
+    width: min(calc(100% - 1.25rem), 760px);
+  }
+
+  .article {
+    padding-top: 2.25rem;
+  }
+
+  .article-header h1 {
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+
+  .meta,
+  .summary,
+  .article-body p {
+    font-size: 0.98rem;
+  }
+}
