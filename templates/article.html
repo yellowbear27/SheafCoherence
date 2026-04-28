@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}} | Sheaf Coherence</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <link rel="canonical" href="https://sheafcoherence.com/insights/{{SLUG}}/">
+  <link rel="stylesheet" href="/style.css">
+  <meta name="robots" content="index, follow">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{TITLE}}",
+    "author": {
+      "@type": "Person",
+      "name": "{{AUTHOR}}"
+    },
+    "datePublished": "{{PUBLISHED}}",
+    "dateModified": "{{UPDATED}}",
+    "description": "{{DESCRIPTION}}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://sheafcoherence.com/insights/{{SLUG}}/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Sheaf Coherence",
+      "url": "https://sheafcoherence.com/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <main class="page">
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/insights/">Insights</a>
+    </nav>
+
+    <article class="article">
+      <header class="article-header">
+        <p class="eyebrow">Sheaf Coherence · {{CATEGORY}}</p>
+        <h1>{{TITLE}}</h1>
+        <p class="meta">
+          By {{AUTHOR}} · Published <time datetime="{{PUBLISHED}}">{{PUBLISHED_HUMAN}}</time> · Updated <time datetime="{{UPDATED}}">{{UPDATED_HUMAN}}</time>
+        </p>
+        <p class="summary">{{SUMMARY}}</p>
+      </header>
+
+      <section class="article-body">
+        {{CONTENT}}
+      </section>
+    </article>
+  </main>
+</body>
+</html>
+
