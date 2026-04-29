@@ -13,7 +13,7 @@ Some operators believe a VPN — a [Virtual Private Network](https://www.investo
 
 Tax authorities do not rely on IP addresses alone. They use the [OECD Common Reporting Standard (CRS)](https://www.oecd.org/tax/automatic-exchange/common-reporting-standard/) to receive financial account data from over 100 countries. Your bank, exchange, and broker report your tax residence based on the address, phone number, and incorporation documents you provided — not your IP geolocation. A VPN does not change any of that.
 
-The [EU DAC8](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023L2226) (already linked in the first article) specifically requires crypto‑asset service providers to report transactions based on the residence of the counterparty, derived from KYC data. A VPN is irrelevant.
+The [EU DAC8](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023L2226) specifically requires crypto‑asset service providers to report transactions based on the residence of the counterparty, derived from KYC data. A VPN is irrelevant.
 
 The [FATF](https://www.fatf-gafi.org/en/publications/Virtualassets/Va-aml-cft-risk-based-approach.html) (Financial Action Task Force) also expects virtual asset service providers to identify the geographic location of their customers using reliable evidence, not just IP.
 

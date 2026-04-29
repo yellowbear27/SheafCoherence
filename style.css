@@ -8,6 +8,11 @@
   --max-width: 1120px;
   --radius: 20px;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+  /* Wikipedia‑like link colours */
+  --link-color: #4a9eff;      /* bright, readable on dark bg */
+  --link-visited: #b77cff;    /* lighter purple */
+  --link-hover: #6eaeff;
+  --link-active: #ffb347;
 }
 
 * {
@@ -29,11 +34,52 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* ========== LINK STYLES (Wikipedia‑like) ========== */
 a {
-  color: inherit;
+  color: var(--link-color);
   text-decoration: none;
+  transition: color 0.1s ease, text-decoration 0.1s ease;
 }
 
+a:visited {
+  color: var(--link-visited);
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  color: var(--link-hover);
+}
+
+a:active {
+  color: var(--link-active);
+}
+
+/* Optional: show the full URL as a small tooltip on hover (like some reference sites) */
+a:hover::after {
+  content: " (" attr(href) ")";
+  font-size: 0.75em;
+  color: var(--muted);
+  background-color: var(--surface);
+  padding: 0.1em 0.4em;
+  border-radius: 12px;
+  white-space: nowrap;
+  margin-left: 0.3em;
+  border: 1px solid var(--line);
+}
+
+/* For links inside article summaries (keep the same behaviour) */
+.insight-item a {
+  color: var(--link-color);
+}
+
+.insight-item a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  color: var(--link-hover);
+}
+
+/* ========== rest of your original CSS (unchanged) ========== */
 .page-shell {
   width: min(calc(100% - 2rem), var(--max-width));
   margin: 0 auto;
@@ -348,10 +394,8 @@ a {
   color: var(--muted);
 }
 
-.insight-item a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.14em;
-}
+/* The hover underline is already handled by the generic a:hover above */
+/* Removed duplicate .insight-item a:hover to avoid conflict */
 
 @media (max-width: 640px) {
   .page {
