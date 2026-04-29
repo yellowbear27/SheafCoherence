@@ -3,6 +3,14 @@ import re
 import html
 from datetime import datetime
 
+# Optional: for full markdown support (install with: pip install markdown)
+try:
+    import markdown
+    USE_MARKDOWN_LIB = True
+except ImportError:
+    USE_MARKDOWN_LIB = False
+    # Fallback to the simple converter below
+
 
 ROOT = Path(".")
 CONTENT_DIR = ROOT / "content" / "insights"
@@ -20,11 +28,12 @@ def write_text(path: Path, text: str) -> None:
 
 
 def parse_frontmatter(text: str) -> tuple[dict, str]:
+    # Allow optional starting whitespace? No – strictly required to start with "---\n"
     if not text.startswith("---\n"):
-        raise ValueError("File must start with frontmatter.")
+        raise ValueError("File must start with frontmatter (first line '---').")
     parts = text.split("---\n", 2)
     if len(parts) < 3:
-        raise ValueError("Frontmatter is not closed properly.")
+        raise ValueError("Frontmatter is not closed properly (missing second '---').")
     frontmatter_block = parts[1]
     body = parts[2].strip()
 
@@ -34,7 +43,7 @@ def parse_frontmatter(text: str) -> tuple[dict, str]:
         if not line:
             continue
         if ":" not in line:
-            raise ValueError(f"Invalid frontmatter line: {line}")
+            raise ValueError(f"Invalid frontmatter line: '{line}'")
         key, value = line.split(":", 1)
         data[key.strip()] = value.strip()
 
@@ -50,7 +59,7 @@ def parse_frontmatter(text: str) -> tuple[dict, str]:
     ]
     for key in required:
         if key not in data or not data[key]:
-            raise ValueError(f"Missing frontmatter field: {key}")
+            raise ValueError(f"Missing or empty frontmatter field: '{key}'")
 
     return data, body
 
@@ -61,6 +70,12 @@ def format_human_date(date_str: str) -> str:
 
 
 def markdown_to_html(text: str) -> str:
+    """Convert markdown to HTML. Uses 'markdown' library if available, else a simple fallback."""
+    if USE_MARKDOWN_LIB:
+        # Full markdown support with common extensions
+        return markdown.markdown(text, extensions=['extra', 'codehilite', 'toc'])
+    
+    # ----- Simple fallback (your original minimal converter) -----
     lines = text.splitlines()
     blocks = []
     paragraph_lines = []
@@ -121,7 +136,11 @@ def build_articles():
 
     for md_file in markdown_files:
         raw = read_text(md_file)
-        meta, body = parse_frontmatter(raw)
+        try:
+            meta, body = parse_frontmatter(raw)
+        except ValueError as e:
+            print(f"⚠️ Skipping {md_file.name}: {e}")
+            continue
 
         content_html = markdown_to_html(body)
         published_human = format_human_date(meta["published"])
@@ -206,4 +225,4 @@ def build_articles():
 if __name__ == "__main__":
     build_articles()
     print("Build complete.")
-
+    print("\n👉 To preview locally, run: python -m http.server 8000")

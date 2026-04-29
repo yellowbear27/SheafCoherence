@@ -1,4 +1,3 @@
-
 ---
 title: The Crypto Operator's Guide to 2026. It Is Not Over.
 slug: crypto-operators-guide-to-2026
