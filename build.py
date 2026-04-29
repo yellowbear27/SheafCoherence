@@ -138,54 +138,64 @@ def build_articles():
         raw = read_text(md_file)
         try:
             meta, body = parse_frontmatter(raw)
+
+            # Append contact line to every article
+            contact_line = (
+                "\n\n---\n\n"
+                "If these changes affect your structure, holdings, or reporting obligations, "
+                "contact Sheaf Coherence for private advisory work: "
+                "[contact@sheafcoherence.com](mailto:contact@sheafcoherence.com)"
+            )
+            body += contact_line
+
+            content_html = markdown_to_html(body)
+            published_human = format_human_date(meta["published"])
+            updated_human = format_human_date(meta["updated"])
+
+            article_html = render_template(
+                article_template,
+                {
+                    "TITLE": html.escape(meta["title"]),
+                    "DESCRIPTION": html.escape(meta["description"]),
+                    "SLUG": html.escape(meta["slug"]),
+                    "AUTHOR": html.escape(meta["author"]),
+                    "PUBLISHED": html.escape(meta["published"]),
+                    "UPDATED": html.escape(meta["updated"]),
+                    "PUBLISHED_HUMAN": html.escape(published_human),
+                    "UPDATED_HUMAN": html.escape(updated_human),
+                    "CATEGORY": html.escape(meta["category"]),
+                    "SUMMARY": html.escape(meta["summary"]),
+                    "CONTENT": content_html,
+                },
+            )
+
+            article_path = OUTPUT_DIR / meta["slug"] / "index.html"
+            write_text(article_path, article_html)
+
+            article_summaries.append(
+                "\n".join(
+                    [
+                        '<article class="insight-item">',
+                        f'  <p class="eyebrow"><time datetime="{html.escape(meta["published"])}">{html.escape(published_human)}</time></p>',
+                        f'  <h2><a href="/insights/{html.escape(meta["slug"])}/">{html.escape(meta["title"])}</a></h2>',
+                        f'  <p>{html.escape(meta["summary"])}</p>',
+                        "</article>",
+                    ]
+                )
+            )
+
+            sitemap_urls.extend(
+                [
+                    "  <url>",
+                    f"    <loc>https://sheafcoherence.com/insights/{html.escape(meta['slug'])}/</loc>",
+                    f"    <lastmod>{html.escape(meta['updated'])}</lastmod>",
+                    "  </url>",
+                ]
+            )
+
         except ValueError as e:
             print(f"⚠️ Skipping {md_file.name}: {e}")
             continue
-
-        content_html = markdown_to_html(body)
-        published_human = format_human_date(meta["published"])
-        updated_human = format_human_date(meta["updated"])
-
-        article_html = render_template(
-            article_template,
-            {
-                "TITLE": html.escape(meta["title"]),
-                "DESCRIPTION": html.escape(meta["description"]),
-                "SLUG": html.escape(meta["slug"]),
-                "AUTHOR": html.escape(meta["author"]),
-                "PUBLISHED": html.escape(meta["published"]),
-                "UPDATED": html.escape(meta["updated"]),
-                "PUBLISHED_HUMAN": html.escape(published_human),
-                "UPDATED_HUMAN": html.escape(updated_human),
-                "CATEGORY": html.escape(meta["category"]),
-                "SUMMARY": html.escape(meta["summary"]),
-                "CONTENT": content_html,
-            },
-        )
-
-        article_path = OUTPUT_DIR / meta["slug"] / "index.html"
-        write_text(article_path, article_html)
-
-        article_summaries.append(
-            "\n".join(
-                [
-                    '<article class="insight-item">',
-                    f'  <p class="eyebrow"><time datetime="{html.escape(meta["published"])}">{html.escape(published_human)}</time></p>',
-                    f'  <h2><a href="/insights/{html.escape(meta["slug"])}/">{html.escape(meta["title"])}</a></h2>',
-                    f'  <p>{html.escape(meta["summary"])}</p>',
-                    "</article>",
-                ]
-            )
-        )
-
-        sitemap_urls.extend(
-            [
-                "  <url>",
-                f"    <loc>https://sheafcoherence.com/insights/{html.escape(meta['slug'])}/</loc>",
-                f"    <lastmod>{html.escape(meta['updated'])}</lastmod>",
-                "  </url>",
-            ]
-        )
 
     insights_html = render_template(
         insights_template,

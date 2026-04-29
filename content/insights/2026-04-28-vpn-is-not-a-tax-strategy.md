@@ -1,20 +1,24 @@
 ---
-title: VPN is not a tax strategy
+title: VPN Is Not a Tax Strategy
 slug: vpn-is-not-a-tax-strategy
-description: VPN is not a tax strategy
+description: Using a VPN to conceal your location for tax purposes does not work. Tax authorities have multiple ways to identify your real economic presence.
 published: 2026-04-28
 updated: 2026-04-28
 author: Jonathan Mok
 category: Insights
-summary: VPN is not a tax strategy
+summary: A VPN hides your IP address, not your tax residence. Here is why it fails as a tax strategy in 2026.
 ---
 
-2026 is different. Not incrementally different. Structurally different.
+Some operators believe a VPN — a [Virtual Private Network](https://www.investopedia.com/terms/v/vpn.asp) — can hide their true location from tax authorities. The thinking: if I appear to be in a low‑tax jurisdiction, I can avoid reporting obligations. This is dangerously wrong.
 
-Singapore Financial Institutions no longer accept your self-certification at face value. Under the CRS 2.0 framework, they are required to identify  material parties in any passive structure including: Settlor, Trustees, Protector, all Beneficiaries. Whether or not a distribution was made. The non-distribution loophole that quietly sheltered a lot of "tax-efficient" structures is old comfort now.
+Tax authorities do not rely on IP addresses alone. They use the [OECD Common Reporting Standard (CRS)](https://www.oecd.org/tax/automatic-exchange/common-reporting-standard/) to receive financial account data from over 100 countries. Your bank, exchange, and broker report your tax residence based on the address, phone number, and incorporation documents you provided — not your IP geolocation. A VPN does not change any of that.
 
-The deeper problem is inconsistency and traceability. Modern reporting systems like XML Schema 3.0 now embeds geographic metadata into automated financial reports. Your VPN routes your Zoom calls through Singapore. IRAS can cross reference your stablecoin off-ramps, your card transactions, your Singpass interactions.  All of it. A persistent mismatch between declared residency and actual digital footprint triggers an automated flag under Section 105M. Penalties for willful evasion are elevated. You are no longer dealing with an overworked auditor working through a filing backlog. You are dealing with a deterministic system. Built specifically to find this pattern.
-Residency is no longer a declaration. It is a data set.
+The [EU DAC8](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023L2226) (already linked in the first article) specifically requires crypto‑asset service providers to report transactions based on the residence of the counterparty, derived from KYC data. A VPN is irrelevant.
 
-The most exposed clients are those who relocated on paper in 2024 or 2025 and assumed the framework had not caught up. It has. The question now is not whether the gap is visible. It is whether you can explain it. Things have changed. You should too.
+The [FATF](https://www.fatf-gafi.org/en/publications/Virtualassets/Va-aml-cft-risk-based-approach.html) (Financial Action Task Force) also expects virtual asset service providers to identify the geographic location of their customers using reliable evidence, not just IP.
 
+Even if a VPN obscures your IP, your transaction history, bank wires, credit card payments, and even device fingerprints create a trail. The [IRS Criminal Investigation division](https://www.irs.gov/compliance/criminal-investigation) has used blockchain tracing and subpoenas to identify individuals behind VPNs in multiple cases.
+
+The only legitimate use of a VPN for privacy is to protect your connection on public Wi‑Fi. It never alters your legal tax residence, nor does it prevent exchange reporting under CRS, DAC8, or US FATCA. If you have structured your affairs around a VPN, you have no structure at all.
+
+The real strategy is documented tax residency, substance in the jurisdiction where you claim to be tax‑resident, and full reporting of worldwide income. Hiding behind a VPN only increases the risk of penalties and criminal exposure.
