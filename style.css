@@ -8,9 +8,8 @@
   --max-width: 1120px;
   --radius: 20px;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
-  /* Wikipedia‑like link colours */
-  --link-color: #4a9eff;      /* bright, readable on dark bg */
-  --link-visited: #b77cff;    /* lighter purple */
+  --link-color: #4a9eff;
+  --link-visited: #b77cff;
   --link-hover: #6eaeff;
   --link-active: #ffb347;
 }
@@ -34,7 +33,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* ========== LINK STYLES (Wikipedia‑like) ========== */
+/* Link styles */
 a {
   color: var(--link-color);
   text-decoration: none;
@@ -55,9 +54,8 @@ a:active {
   color: var(--link-active);
 }
 
-/* ========== HOVER TOOLTIP – ONLY INSIDE ARTICLE AND INSIGHT LINKS ========== */
-.article-body a:hover::after,
-.insight-item a:hover::after {
+/* URL tooltip ONLY on article body links (not on insights index, not on nav) */
+.article-body a:hover::after {
   content: " (" attr(href) ")";
   font-size: 0.75em;
   color: var(--muted);
@@ -69,7 +67,7 @@ a:active {
   border: 1px solid var(--line);
 }
 
-/* ========== rest of your original CSS (unchanged) ========== */
+/* Rest of your original CSS (unchanged below) */
 .page-shell {
   width: min(calc(100% - 2rem), var(--max-width));
   margin: 0 auto;
