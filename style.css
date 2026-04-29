@@ -55,8 +55,9 @@ a:active {
   color: var(--link-active);
 }
 
-/* Optional: show the full URL as a small tooltip on hover (like some reference sites) */
-a:hover::after {
+/* ========== HOVER TOOLTIP – ONLY INSIDE ARTICLE AND INSIGHT LINKS ========== */
+.article-body a:hover::after,
+.insight-item a:hover::after {
   content: " (" attr(href) ")";
   font-size: 0.75em;
   color: var(--muted);
@@ -66,17 +67,6 @@ a:hover::after {
   white-space: nowrap;
   margin-left: 0.3em;
   border: 1px solid var(--line);
-}
-
-/* For links inside article summaries (keep the same behaviour) */
-.insight-item a {
-  color: var(--link-color);
-}
-
-.insight-item a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-  color: var(--link-hover);
 }
 
 /* ========== rest of your original CSS (unchanged) ========== */
@@ -393,9 +383,6 @@ a:hover::after {
   margin: 0;
   color: var(--muted);
 }
-
-/* The hover underline is already handled by the generic a:hover above */
-/* Removed duplicate .insight-item a:hover to avoid conflict */
 
 @media (max-width: 640px) {
   .page {
